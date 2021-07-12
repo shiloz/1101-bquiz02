@@ -39,8 +39,22 @@
 
         if(acc=="" || pw=="" || pw2=="" || email==""){
             alert("不可空白");
+        }else if(pw!=pw2){
+            alert("密碼錯誤")
         }else{
-            
+            $.get('api/chk_acc.php',{acc},(res)=>{
+                if(res=='1'){
+                    alert('帳號重複')
+                }else{
+                    $.post('api/save_reg.php',{acc,pw,email},(chk)=>{
+                        if(chk=='1'){
+                            alert("註冊完成,歡迎加入")
+                        }else{
+                            alert("註冊失敗,請洽管理員")
+                        }
+                    })
+                }
+            })
         }
 
     }

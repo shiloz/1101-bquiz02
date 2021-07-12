@@ -136,6 +136,8 @@ class DB{
 }
 
 $Total=new DB('total');
+$Mem=new DB('mem');
+
 
 //判斷是否要新增當日的資料
 if($Total->count(['date'=>date("Y-m-d")])<=0){
