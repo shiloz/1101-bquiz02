@@ -3,6 +3,8 @@ function lo(th,url)
 {
 	$.ajax(url,{cache:false,success: function(x){$(th).html(x)}})
 }
+
+
 function good(id,type,user)
 {
 	$.post("back.php?do=good&type="+type,{"id":id,"user":user},function()
