@@ -19,7 +19,7 @@
         <?=date("m 月 d 號 l");?> | 今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?> | 累積瀏覽: <?=$Total->sum('total');?>        
 	    </div>
         <div id="title2">
-        	
+        	<img src="icon/02B01.jpg" alt="">
         </div>
         <div id="mm">
         	<div class="hal" id="lef">
@@ -32,11 +32,14 @@
             <div class="hal" id="main">
             	<div>
             		
-                	<span style="width:18%; display:inline-block;">
-                    	                    	<a href="?do=login">會員登入</a>
-                    	                    </span>
+				<span style="width:80%; display:inline-block;">
+						<marquee>請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
+				</span>
+				<span style="width:18%; display:inline-block;">
+						<a href="?do=login">會員登入</a>
+				</span>
                     	<div class="">
-                		                        </div>
+                		</div>
                 </div>
             </div>
         </div>
