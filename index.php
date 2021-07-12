@@ -16,7 +16,7 @@
 
 	<div id="all">
     	<div id="title">
-        <?=date("m 月 d 號 l");?> | 今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?> | 累積瀏覽: 36        
+        <?=date("m 月 d 號 l");?> | 今日瀏覽: <?=$Total->find(['date'=>date("Y-m-d")])['total'];?> | 累積瀏覽: <?=$Total->sum('total');?>        
 	    </div>
         <div id="title2">
         	

@@ -104,6 +104,12 @@ class DB{
 
     }
 
+    //欄位加總的計畫
+    public function sum($col){
+        $sql="select sum(`$col`) from $this->table";
+
+        return $this->pdo->query($sql)->fetchColumn();
+    }
 
     public function save($array){
         if(isset($array['id'])){
