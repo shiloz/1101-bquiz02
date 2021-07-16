@@ -1,8 +1,10 @@
 <?php include_once "../base.php";
 
-$acc=$_GET['acc'];
+echo $Mem->count($_GET);
+
+/* $acc=$_GET['acc'];
 $pw=$_GET['pw'];
-echo $Mem->count(['acc'=>$acc,'pw'=>$pw]);
+echo $Mem->count(['acc'=>$acc,'pw'=>$pw]); */
 
 /* $chk=$Mem->count(['acc'=>$acc]);
 
