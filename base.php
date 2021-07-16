@@ -137,6 +137,7 @@ class DB{
 
 $Total=new DB('total');
 $Mem=new DB('mem');
+$News=new DB('news');
 
 
 //判斷是否要新增當日的資料
