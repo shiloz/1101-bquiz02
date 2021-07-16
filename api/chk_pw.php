@@ -1,6 +1,9 @@
 <?php include_once "../base.php";
 
-echo $Mem->count($_GET);
+if($Mem->count($_GET)){
+    echo $Mem->count($_GET);
+    $_SESSION['login']=$_GET['acc'];
+};
 
 /* $acc=$_GET['acc'];
 $pw=$_GET['pw'];
