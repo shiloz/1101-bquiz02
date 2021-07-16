@@ -38,9 +38,7 @@
         ?>
     </table>
     <div class="ct">
-        <input type="submit" value="確定刪除">
-        <input type="reset" value="清空選取">
-
+        <input type="submit" value="確定修改">
     </div>
     </form>
     <div class="ct">

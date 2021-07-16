@@ -1,9 +1,16 @@
 <?php include_once "../base.php";
 
-if(isset($_POST['del'])){
-    foreach ($_POST['del'] as $id) {
-        $Mem->del($id);
-    }
-}
 
-to("../backend.php?do=acc");
+    foreach ($_POST['id'] as $id) {
+        if(isset($_POST['del']) && in_array($id,$_POST['del'])){
+            $News->del($id);
+        }else{
+            $news=$News->find($id);
+
+            $news['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
+            $News->save($news);
+        }
+    }
+
+
+to("../backend.php?do=news");
