@@ -45,7 +45,7 @@
             <?php
 
                 if(($now-1)>0){
-                    echo "<a href='backend.php?do=news&p=".($now-1)."'?> < </a>";
+                    echo "<a href='backend.php?do=news&p=".($now-1)."'> < </a>";
                 }
 
                 for($i=1;$i<=$pages;$i++){
@@ -54,7 +54,7 @@
                 }
 
                 if(($now+1)<=$pages){
-                    echo "<a href='backend.php?do=news&p=".($now+1)."'?> > </a>";
+                    echo "<a href='backend.php?do=news&p=".($now+1)."'> > </a>";
                 }
             ?>
     </div>
