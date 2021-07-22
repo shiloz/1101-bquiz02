@@ -41,7 +41,7 @@ class DB{
 
         }
 
-        //echo $sql;
+        $sql;
         return $this->pdo->query($sql)->fetchAll();
 
     }
