@@ -139,7 +139,7 @@ $Total=new DB('total');
 $Mem=new DB('mem');
 $News=new DB('news');
 $Que=new DB('que');
-
+$Log=new DB('log');
 //判斷是否要新增當日的資料
 if($Total->count(['date'=>date("Y-m-d")])<=0){
     $Total->save(['date'=>date("Y-m-d"),'total'=>0]);

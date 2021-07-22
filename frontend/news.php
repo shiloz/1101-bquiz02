@@ -1,10 +1,16 @@
 <div>目前位置：首頁 > 最新文章區</div>
+<style>
+    .news-all{
+        display:none;
+    }
 
+
+</style>
 <table>
     <tr>
         <td width="30%">標題</td>
         <td>內容</td>
-        <td>人氣</td>
+        <?=(isset($_SESSION['login']))?"<td>人氣</td>":"";?>
     </tr>
     <?php
     $all=$News->count(['sh'=>1]);
@@ -17,9 +23,24 @@
     foreach($news as $n){
     ?>
     <tr>
-        <td class="clo"><?=$n['title'];?></td>
-        <td><?=mb_substr($n['news'],0,30);?>...</td>
-        <td></td>
+        <td class="clo news-header"><?=$n['title'];?></td>
+        <td>
+            <div class="news-title"><?=mb_substr($n['news'],0,30);?>...</div>
+            <div class="news-all"><?=nl2br($n['news']);?></div>
+    </td>
+        <?php
+            if(isset($_SESSION['login'])){
+                echo "<td>";
+                $chk=$Log->count(['acc'=>$_SESSION['login'],'news'=>$n['id']]);
+                if($chk>0){
+                    echo "<a id='good{$n['id']}' href='#' onclick=good(2,{$n['id']},&#39;{$_SESSION['login']}&#39;)>收回讚</a>";
+                }else{
+                    echo "<a id='good{$n['id']}' href='#' onclick=good(1,{$n['id']},&#39;{$_SESSION['login']}&#39;)>讚</a>";
+                }
+                echo "</td>";
+            }
+            
+        ?>
     </tr>
     <?php
         }
@@ -50,3 +71,13 @@
 
 ?>
 </div>
+<script>
+$(".news-all,.news-title").on("click",function(){
+    $(this).toggle()
+    $(this).siblings().toggle()
+})
+
+$(".news-header").on("click",function(){
+    $(this).next().children(".news-all,.news-title").toggle();
+})
+</script>
