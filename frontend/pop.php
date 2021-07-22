@@ -9,6 +9,9 @@
 		z-index:9999;
 		overflow:auto;
         position:absolute;
+/*         position:fixed;
+        left:900px;
+        top:250px; */
         padding:10px;
         box-shadow:0 0 10px #ccc;
         border:10px solid white;
