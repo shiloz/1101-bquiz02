@@ -4,7 +4,7 @@
     <tr>
         <td width="30%">標題</td>
         <td>內容</td>
-        <td>人氣</td>
+        <td width="18%">人氣</td>
     </tr>
     <?php
     $all=$News->count(['sh'=>1]);
@@ -19,7 +19,29 @@
     <tr>
         <td class="clo"><?=$n['title'];?></td>
         <td><?=mb_substr($n['news'],0,30);?>...</td>
-        <td></td>
+        <td>
+        <?php
+
+            echo "<span id='vie{$n['id']}'>".$n['pop']."</span>";
+            //echo $Log->count(['news'=>$n['id']]);
+            echo "個人說";
+            echo "<img src='icon/02B03.jpg' style='width:25px;'>";
+
+            if(isset($_SESSION['login'])){
+
+                $chk=$Log->count(['acc'=>$_SESSION['login'],'news'=>$n['id']]);
+                if($chk>0){
+                    echo "<a id='good{$n['id']}' href='#' onclick=good(2,{$n['id']},&#39;{$_SESSION['login']}&#39;)>收回讚</a>";
+                }else{
+                    echo "<a id='good{$n['id']}' href='#' onclick=good(1,{$n['id']},&#39;{$_SESSION['login']}&#39;)>讚</a>";
+                }
+
+            }
+            
+        ?>
+
+
+        </td>
     </tr>
     <?php
         }

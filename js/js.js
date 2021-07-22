@@ -9,7 +9,7 @@ function good(type,news,acc)
 {
 	$.post("api/good.php",{type,news,acc},function(res)
 	{
-		console.log(res)
+
 		if(type=="1")
 		{
 			$("#vie"+news).text($("#vie"+news).text()*1+1)
