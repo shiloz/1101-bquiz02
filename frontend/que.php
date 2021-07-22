@@ -17,7 +17,7 @@
         <td><?=$key+1;?></td>
         <td><?=$que['text'];?></td>
         <td><?=$que['vote'];?></td>
-        <td><a href="#">結果</a></td>
+        <td><a href="index.php?do=result&id=<?=$que['id'];?>>">結果</a></td>
         <td>
             <?php
                 if(isset($_SESSION['login'])){
