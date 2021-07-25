@@ -7,12 +7,11 @@
 <link href="./css/css.css" rel="stylesheet" type="text/css">
 <script src="./js/jquery-1.9.1.min.js"></script>
 <script src="./js/js.js"></script>
+
 </head>
 
 <body>
-<div id="alerr" style="background:rgba(51,51,51,0.8); color:#FFF; min-height:100px; width:300px; position:fixed; display:none; z-index:9999; overflow:auto;">
-	<pre id="ssaa"></pre>
-</div>
+
 
 	<div id="all">
     	<div id="title">
@@ -37,7 +36,30 @@
 						<marquee>請民眾踴躍投稿電子報，讓電子報成為大家相互交流、分享的園地！詳見最新文章</marquee>
 				</span>
 				<span style="width:18%; display:inline-block;">
+				<?php
+						if(isset($_SESSION['login'])){
+							if($_SESSION['login']=='admin'){
+						?>
+							歡迎，<?=$_SESSION['login'];?><br>
+							<a href="backend.php">管理</a>|
+							<a href="frontend/logout.php">登出</a>
+						<?php
+							}else{
+						?>
+							歡迎，<?=$_SESSION['login'];?>
+							<a href="frontend/logout.php">登出</a>
+						<?php		
+							}
+			    ?>
+						
+				<?php
+						}else{
+				?>
 						<a href="?do=login">會員登入</a>
+				<?php
+						}
+				?>
+						
 				</span>
 					<div class="content">
 						<?php

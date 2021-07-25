@@ -256,7 +256,18 @@ function to($url){
 剩下的登入後按讚功能比較複雜，花時間又容易錯，
 我們可以先放著最後再來做或是先去做其它相對簡單的功能再回來補
 ```
-
+    參考語法:
+    如果不想另外增加計數人氣的欄位，可以使用子查詢的語法來從log表中得到人氣文章的計算結果，
+    再做排序
+    SELECT * 
+    FROM `news` 
+    left join 
+    　(SELECT `news` as 'news_id' ,
+    　　　　 count(*) as 'count' 
+    　 from `log` 
+       group by `news`)A 
+    on A.news_id=news.id 
+    order by A.count desc
 ----
 
 ## 步驟十二：處理會員登入及文章按讚紀錄

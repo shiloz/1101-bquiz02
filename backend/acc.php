@@ -1,5 +1,37 @@
 <fieldset>
-    <legend>會員註冊</legend>
+    <legend>帳號管理</legend>
+    <form action="api/admin_acc.php" method="post">
+    <table class='ct tab' style="margin:auto">
+        <tr>
+            <td width="30%" class='clo'>帳號</td>
+            <td width="30%" class='clo'>密碼</td>
+            <td width="40%" class='clo'>刪除</td>
+        </tr>
+        <?php
+        $mems=$Mem->all();
+        foreach ($mems as $key => $value) {
+            if($value['acc']!='admin'){
+        ?>
+        <tr>
+            <td><?=$value['acc'];?></td>
+            <td><?=str_repeat("*",mb_strlen($value['pw']));?></td>
+            <td>
+                <input type="checkbox" name="del[]" value="<?=$value['id'];?>">
+            </td>
+        </tr>
+        <?php
+            }
+                }
+        ?>
+    </table>
+    <div class="ct">
+        <input type="submit" value="確定刪除">
+        <input type="reset" value="清空選取">
+
+    </div>
+    </form>
+
+    <h2>新增會員</h2>
     <div style="color:red">*請設定您要註冊的帳號及密碼(最長12個字元)</div>
     <form>
     <table>
@@ -28,7 +60,7 @@
         </tr>
     </table>
     </form>
-</fieldset>
+
 
 <script>
     function reg(){
@@ -47,12 +79,7 @@
                     alert('帳號重複')
                 }else{
                     $.post('api/save_reg.php',{acc,pw,email},(chk)=>{
-                        console.log(chk,typeof(chk))
-                        if(chk=='1'){
-                            alert("註冊完成,歡迎加入")
-                        }else{
-                            alert("註冊失敗,請洽管理員")
-                        }
+                        location.reload();
                     })
                 }
             })
@@ -60,3 +87,7 @@
 
     }
 </script>
+</fieldset>
+
+
+
